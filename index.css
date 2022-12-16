@@ -1,115 +1,176 @@
-*{
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+* {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 }
 
-button{
-    padding:10px;
-    border: 1px solid black;
-    text-transform: uppercase;
-    border-radius: 5px;
+h1 {
+	font-size: larger;
 }
 
-button:hover{
-    cursor: pointer;
+button {
+	padding: 10px;
+	border: 0px solid black;
+	text-transform: uppercase;
+	border-radius: 5px;
 }
 
-.hide{
-    display:none;
+button:hover {
+	cursor: pointer;
 }
 
-#searchBar,#searchBtn{
-    margin: 0;
-    padding:20px;
-    height: fit-content;
-    border: 0.5px solid black;
-    outline: none;
+.hide {
+	display: none;
 }
 
-#searchBar{
-    border-right: 0px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
+body {
+	background-color: blueviolet;
 }
 
-#searchBtn{
-    border-left: 0px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
+#searchBar,
+#searchBtn {
+	margin: 0;
+	padding: 20px;
+	height: fit-content;
+	border: 0.5px solid black;
+	outline: none;
 }
 
-#mainActions{
-    display: flex;
-    width: 100%;
-    position: relative;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+#searchBar {
+	border-right: 0px;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
 }
 
-.container,main{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    width:90%;
-    padding:20px;
+#searchBtn {
+	border-left: 0px;
+	border-top-left-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
 }
 
-main{
-    padding-top: 0px;
-
+#mainActions {
+	display: flex;
+	width: 100%;
+	position: relative;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
 
-#recipe_details{
-    display: flex;
-    flex-direction: column;
+.container {
+	position: relative;
+	margin: 0 auto;
+	height: 100vh;
+	width: 100vw;
+	color: beige;
+	overflow: hidden;
 }
 
-#cockTailContents{
-    display: flex;
-    flex-direction:row;
-    justify-content: space-around;
-    align-items: flex-start;
+.container,
+main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	margin: 0;
 }
 
-#myCocktailImg,#tab_container{
-    position: relative;
-    width: 40%;
+main {
+	padding-top: 0px;
 }
 
-#myCocktailImg{
-    border-radius: 20px;
+#recipe_details {
+	display: flex;
+	flex-direction: column;
 }
 
-#tab_container{
-    display: inline-flex;
-    position: relative;
-    justify-content:flex-start;
-    align-content: center;
-    padding:20px;
+#cockTailContents {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
 }
 
-#ingredients{
-    margin-right:16px;
+#myCocktailImg,
+#tab_container {
+	position: relative;
+	width: 40%;
 }
 
-#rating_container{
-    padding:0 20px;
+#myCocktailImg {
+	border-radius: 20px;
 }
 
-.star{
-    display: inline-block;
-    padding:4px 5px;
+#tab_container {
+	display: inline-flex;
+	position: relative;
+	justify-content: flex-start;
+	align-content: center;
+	padding: 20px;
 }
 
-.star:hover{
-    cursor: pointer;
+#instructions,
+#ingredients {
+	background-color: rgba(60, 34, 85, 0.473);
+	border: 1px solid black;
+	box-shadow: inset 1px 1px 1px 1px black;
+	color: white;
 }
 
-#rate{
-    font-weight: 700;
-    font-style: italic;
+#ingredients {
+	margin-right: 16px;
+}
+
+#rating_container {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	padding: 0 20px;
+}
+
+.star {
+	display: inline-block;
+	padding: 4px 5px;
+}
+
+.star:hover {
+	cursor: pointer;
+}
+
+#rate {
+	font-weight: 400;
+	font-style: italic;
+}
+
+.fa-star {
+	color: orange;
+}
+
+#instructions_list {
+	max-width: 250px;
+}
+
+@media screen and (min-width: 600px) {
+	#mainActions {
+		display: flex;
+		width: 100%;
+		position: relative;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+	}
+	.or {
+		margin: 0 20px;
+	}
+	#cockTailContents {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: flex-start;
+	}
+	h1 {
+		font-size: x-large;
+	}
 }
