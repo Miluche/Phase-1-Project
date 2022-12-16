@@ -28,6 +28,22 @@ function buildList(id, content) {
     }
 }
 
+function rate(startPostions) {
+    //first remove the previous rating
+    for (let start = 1; start <= 5; start++) {
+        let el = document.querySelector(`#star${start}`);
+        el.classList.remove("fa-star");
+        el.classList.add("fa-star-o");
+    };
+
+    //rate upto the chosen value
+    for (let start = 1; start <= startPostions; start++) {
+        let el = document.querySelector(`#star${start}`);
+        el.classList.remove("fa-star-o");
+        el.classList.add("fa-star");
+    };
+}
+
 //generate the rating stars using js
 function buildRating(parent_El) {
     createElement("div", { id: "rating_container" }, parent_El);
@@ -40,26 +56,18 @@ function buildRating(parent_El) {
         let star = document.querySelector(`#star${start}`);
 
         star.addEventListener("mouseover", (evt) => {
-            evt.preventDefault();
             const id = evt.target.id;
             const starNum = parseInt(id[id.length - 1]);
 
-            //first remove the previous rating
-            for (let start = 1; start <= 5; start++) {
-                let el = document.querySelector(`#star${start}`);
-                el.classList.remove("fa-star");
-                el.classList.add("fa-star-o");
-            };
-
-            //rate upto the chosen value
-            for (let start = 1; start <= starNum; start++){
-                let el = document.querySelector(`#star${start}`);
-                el.classList.remove("fa-star-o");
-                el.classList.add("fa-star");
-            };
+            rate(starNum);
         });
 
+        star.addEventListener("onclick", (evt) => {
+            const id = evt.target.id;
+            const starNum = parseInt(id[id.length - 1]);
 
+            rate(starNum);
+        });
     }
 
     
@@ -152,7 +160,7 @@ function toggleEl(id, value) {
 
 //remove all the generated content
 function clearContent() {
-    const el = document.querySelector("#name");
+    const el = document.querySelector("#name") || document.querySelector("#error");
 
     if (el) {
         main_body.innerHTML = "";
@@ -167,8 +175,7 @@ function getDataFromApi(url) {
         .then(response => {
             buildMainBodyDisplay(response.drinks[0])
         })
-        .catch((err) => {
-            console.log(err)
+        .catch(() => {
             createElement("h1", { id: "error" },undefined,"Couldn't find a cocktail based on specified ingredient. Please try again");
         });
 };
@@ -181,6 +188,7 @@ generateRandom.addEventListener("click", () => {
 
 //used with the search functionality as it generates more than one result we pick the first one
 async function getDrinksByIngredient(url) {
+    clearContent();
     try {
         const res = await ((await fetch(url)).json());
         const new_url = `https:www.thecocktaildb.com/api/json/v1/1/search.php?s=${res.drinks[0].strDrink}`;
@@ -195,6 +203,7 @@ async function getDrinksByIngredient(url) {
 //reads an input on the search box
 searchBar.addEventListener("change", (evt) => {
     const value = evt.target.value;
+    searchBar.value = "";
     const url = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${value}`;
     getDrinksByIngredient(url);
 });
